@@ -28,6 +28,16 @@ namespace SignalRApi.Controllers
             var value = _mapper.Map<List<ResultProductDto>>(_productService.TGetListAll());
             return Ok(value);
         }
+
+        [HttpGet("ProductListWithCategory")]
+        public IActionResult ProductListWithCategory()
+        {
+            var value = _mapper.Map<List<ResultProductWithCategory>>
+                (_productService.TGetProductsWithCategories());
+            return Ok(value);
+        }
+
+
         [HttpPost]
         public IActionResult CreateProduct(CreateProductDto createProductDto)
         {
@@ -39,14 +49,14 @@ namespace SignalRApi.Controllers
                 ProductName = createProductDto.ProductName,
                 ProductStatus = createProductDto.ProductStatus
             });
-            return Ok("İletişim bilgisi Eklendi");
+            return Ok("Ürün bilgisi Eklendi");
         }
         [HttpDelete]
         public IActionResult DeleteProduct(int id)
         {
             var value = _productService.TGetById(id);
             _productService.TDelete(value);
-            return Ok("İletişim Bilgisi Silindi");
+            return Ok("Ürün Bilgisi Silindi");
         }
         [HttpGet("GetProduct")]
         public IActionResult GetProduct(int id)
@@ -68,7 +78,7 @@ namespace SignalRApi.Controllers
                Price = updateProductDto.Price,
                
             });
-            return Ok("İletişim bilgisi Güncellendi");
+            return Ok("Ürün bilgisi Güncellendi");
         }
     }
 }
