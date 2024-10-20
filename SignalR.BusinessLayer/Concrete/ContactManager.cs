@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SignalR.BusinessLayer.Concrete
 {
-    internal class ContactManager : IContactService
+    public class ContactManager : IContactService
     {
         private readonly IContactDal _contactDal;
 
